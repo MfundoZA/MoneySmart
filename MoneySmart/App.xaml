@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:MoneySmart"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="WindowLight" TargetType="Window">
+            <Setter Property="Background" Value="#E1E6E1" />
+        </Style>
+        <Style x:Key="WindowDark" TargetType="Window">
+            <Setter Property="Background" Value="#262626" />
+        </Style>
     </Application.Resources>
 </Application>
