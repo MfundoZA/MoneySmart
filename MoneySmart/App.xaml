@@ -10,5 +10,10 @@
         <Style x:Key="WindowDark" TargetType="Window">
             <Setter Property="Background" Value="#262626" />
         </Style>
+        <Style x:Key="MenuItemLight" TargetType="MenuItem">
+            <Setter Property="Width" Value="Auto" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Background" Value="#00000000" />
+        </Style>
     </Application.Resources>
 </Application>
