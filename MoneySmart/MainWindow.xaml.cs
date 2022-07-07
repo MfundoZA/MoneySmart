@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoneySmart.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace MoneySmart
         public MainWindow()
         {
             InitializeComponent();
+            MainViewModel viewModel = new MainViewModel();
         }
     }
 }
