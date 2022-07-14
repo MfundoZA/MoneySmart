@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoneySmart.Data;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,12 @@ namespace MoneySmart
     /// </summary>
     public partial class App : Application
     {
+        Database database = new Database();
+
+        public App()
+        {
+            String appTheme = database.getTheme();
+
+        }
     }
 }
