@@ -51,5 +51,23 @@ namespace MoneySmart.Data
                 }
             }
         }
+
+        public string getTheme()
+        {
+            string appTheme = null;
+
+            Connection.Open();
+            if (Connection.State == System.Data.ConnectionState.Open)
+            {
+                string getTheme = "SELECT [value] FROM Setting WHERE [key] = 'Theme'";
+                SqlCommand command = new SqlCommand(getTheme, Connection);
+                SqlDataReader reader = command.ExecuteReader();
+
+                reader.Read();
+                appTheme = (string) reader[0];
+            }
+
+            return appTheme;
+        }
     }
 }
