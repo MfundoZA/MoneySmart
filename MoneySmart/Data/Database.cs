@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MoneySmart.Data
 {
-    class Database
+    public class Database
     {
         private SqlConnection Connection { get; set; }
         private string ConnectionString { get; set; }
@@ -27,7 +27,8 @@ namespace MoneySmart.Data
             {
                 string getAllTransactions = "SELECT t.id, t.description, [Type].type, t.amount, pay.payment_method FROM [Transaction] " +
                     "AS t INNER JOIN [Type] ON t.type_id = [Type].type_id " +
-                    "INNER JOIN PaymentMethod AS pay ON t.payment_method_id = pay.payment_method_id";
+                    "INNER JOIN PaymentMethod AS pay ON t.payment_method_id = pay.payment_method_id " +
+                    "ORDER BY [Type].type DESC";
                 SqlCommand command = new SqlCommand(getAllTransactions, Connection);
                 SqlDataReader reader = command.ExecuteReader();
 
@@ -35,7 +36,7 @@ namespace MoneySmart.Data
                 {
                     Transaction transaction = new Transaction();
                     transaction.Id = (int) reader[0];
-                    transaction.Descrption = (string) reader[1];
+                    transaction.Description = (string) reader[1];
 
                     Models.Type transactionType;
                     Enum.TryParse((string) reader[2], out transactionType);
@@ -49,6 +50,8 @@ namespace MoneySmart.Data
 
                     Transactions.Add(transaction);
                 }
+
+                Connection.Close();
             }
         }
 
@@ -67,6 +70,7 @@ namespace MoneySmart.Data
                 appTheme = (string) reader[0];
             }
 
+            Connection.Close();
             return appTheme;
         }
     }
