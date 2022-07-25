@@ -14,10 +14,11 @@ namespace MoneySmart
     /// </summary>
     public partial class App : Application
     {
-        Database database = new Database();
+        public static Database database { get; private set; }
 
         public App()
         {
+            database = new Database();
             String appTheme = database.getTheme();
 
         }
