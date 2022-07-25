@@ -5,9 +5,9 @@ using System.Text;
 
 namespace MoneySmart.ViewModel
 {
-    class MainViewModel
+    public class MainViewModel
     {
-        private Database database { get; set; }
+        public Database database { get; private set; }
 
         public MainViewModel()
         {
