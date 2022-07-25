@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MoneySmart"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Style="{StaticResource Window}" Loaded="Window_Loaded">
+        Title="MainWindow" Height="450" Width="800" Style="{StaticResource Window}" Activated="Window_Activated">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.5*" MinHeight="25" MaxHeight="30"/>
@@ -110,5 +110,52 @@
 
             </Border>
         </Grid>
+        
+        
+        <!-- List of transactions panel -->
+        <Border BorderThickness="3" CornerRadius="10" Padding="2" Margin="4" Grid.Row="2">
+
+            <Grid>
+
+                <!-- Rounded mask (stretches to fill Grid) -->
+                <Border Background="White" CornerRadius="7"/>
+
+                <!-- Main content container -->
+                <ListBox x:Name="lstTransactions" Margin="4" BorderBrush="#00ABADB3">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <StackPanel Orientation="Horizontal" Grid.Row="0">
+                                    <Label Content="Description:" FontSize="18" FontFamily="Arial" FontWeight="SemiBold" />
+                                    <Label Content="{Binding Description}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" FontSize="18" FontFamily="Arial" />
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal"  Grid.Row="1" Margin="0,0,0,0">
+                                    <Label Content="Transaction Type:" FontSize="18" FontFamily="Arial" FontWeight="SemiBold" />
+                                    <Label Content="{Binding Type}"  HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="0,0,0,0" FontFamily="Arial" FontSize="18" />
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Grid.Row="2">
+                                    <Label Content="Amount:" FontSize="18" FontFamily="Arial" FontWeight="SemiBold" />
+                                    <Label Content="{Binding Amount}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="0,0,0,0" FontSize="18" FontFamily="Arial"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal"  Grid.Row="3" Margin="0,0,0,16">
+                                    <Label Content="Payment Method:" FontSize="18" FontFamily="Arial" FontWeight="SemiBold" />
+                                    <Label Content="{Binding PaymentMethod}"  HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="0,0,0,0" FontFamily="Arial" FontSize="18" />
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate >
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </Border>
     </Grid>
 </Window>
