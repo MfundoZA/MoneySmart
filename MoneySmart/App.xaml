@@ -4,16 +4,16 @@
              xmlns:local="clr-namespace:MoneySmart"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style x:Key="WindowLight" TargetType="Window">
-            <Setter Property="Background" Value="#E1E6E1" />
-        </Style>
-        <Style x:Key="WindowDark" TargetType="Window">
-            <Setter Property="Background" Value="#262626" />
-        </Style>
-        <Style x:Key="MenuItemLight" TargetType="MenuItem">
+        <Style x:Key="Window" TargetType="Window">
+                    <Setter Property="Background" Value="#E1E6E1" />
+                </Style>
+        <Style x:Key="MenuItem" TargetType="MenuItem">
             <Setter Property="Width" Value="Auto" />
-            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Height" Value="{Binding Path=ActualHeight, ElementName=mnuMenu}" />
             <Setter Property="Background" Value="#00000000" />
         </Style>
     </Application.Resources>
 </Application>
+
+    <!-- Use the appTheme value retrived from the database to programtically set the app theme -->
+    <!-- Figure out how to make the nested styles to work in the UI -->
