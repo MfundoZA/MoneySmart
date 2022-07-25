@@ -55,6 +55,19 @@ namespace MoneySmart.Data
             }
         }
 
+        public void addIncome(Transaction income)
+        {
+            Connection.Open();
+            if (Connection.State == System.Data.ConnectionState.Open)
+            {
+                string addIncome = "INSERT INTO [Transaction] ([description], [type_id], amount, payment_method_id) VALUES" +
+                    $"('{income.Description}', {(int)income.Type}, {income.Amount}, {(int)income.PaymentMethod});";
+
+                SqlCommand command = new SqlCommand(addIncome, Connection);
+                command.ExecuteNonQuery();
+            }
+        }
+
         public string getTheme()
         {
             string appTheme = null;
