@@ -6,7 +6,7 @@ namespace MoneySmart.Models
 {
     public enum Type
     {
-        Income,
-        Expense
+        Income = 1,
+        Expense = 2
     }
 }
