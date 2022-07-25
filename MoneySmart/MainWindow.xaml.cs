@@ -49,7 +49,7 @@ namespace MoneySmart
 
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Window_Activated(object sender, EventArgs e)
         {
             lstTransactions.ItemsSource = viewModel.database.Transactions;
         }
