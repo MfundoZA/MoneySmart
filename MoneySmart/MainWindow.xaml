@@ -5,20 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MoneySmart"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Style="{StaticResource WindowLight}">
+        Title="MainWindow" Height="450" Width="800" Style="{StaticResource Window}" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*" MinHeight="15" MaxHeight="30"/>
+            <RowDefinition Height="0.5*" MinHeight="25" MaxHeight="30"/>
             <RowDefinition Height="2*" />
             <RowDefinition Height="7*" />
         </Grid.RowDefinitions>
 
         <!-- Ribbon for navigation and creating transactions -->
-        <Menu Grid.Row="0">
-            <MenuItem Style="{StaticResource MenuItemLight}" Header="New Income"></MenuItem>
-            <MenuItem Style="{StaticResource MenuItemLight}" Header="New Expense"></MenuItem>
-            <MenuItem Style="{StaticResource MenuItemLight}" Header="Dashboard"></MenuItem>
-            <MenuItem Style="{StaticResource MenuItemLight}" Header="Settings"></MenuItem>
+        <Menu x:Name="mnuMenu" MinHeight="25" MaxHeight="30">
+            <MenuItem Style="{StaticResource MenuItem}" Header="New Income" Click="mniNewIncomeOnClick" MinHeight="25" MaxHeight="30"></MenuItem>
+            <MenuItem Style="{StaticResource MenuItem}" Header="New Expense" Click="mniNewExpenseOnClick" MinHeight="25" MaxHeight="30"></MenuItem>
+            <MenuItem Style="{StaticResource MenuItem}" Header="Dashboard" Click="mniDashboardOnClick" MinHeight="25" MaxHeight="30"></MenuItem>
+            <MenuItem Style="{StaticResource MenuItem}" Header="Settings" Click="mniSettingsOnClick" MinHeight="25" MaxHeight="30"></MenuItem>
         </Menu>
 
         <!-- Montly summary container -->
@@ -82,6 +82,7 @@
 
             </Border>
 
+            <!-- Monthly savings panel -->
             <Border BorderThickness="3" CornerRadius="10" Padding="2" Grid.Column="2" Grid.Row="1">
 
                 <Grid>
