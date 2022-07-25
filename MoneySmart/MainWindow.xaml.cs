@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MoneySmart.Views;
 
 namespace MoneySmart
 {
@@ -21,10 +22,36 @@ namespace MoneySmart
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainViewModel viewModel;
         public MainWindow()
         {
             InitializeComponent();
-            MainViewModel viewModel = new MainViewModel();
+            viewModel = new MainViewModel();
+        }
+
+        private void mniNewIncomeOnClick(object sender, RoutedEventArgs e)
+        {
+            var newIncomeWindow = new NewIncomeWindow();
+            bool? result = newIncomeWindow.ShowDialog();
+        }
+
+        private void mniNewExpenseOnClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void mniDashboardOnClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void mniSettingsOnClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            lstTransactions.ItemsSource = viewModel.database.Transactions;
         }
     }
 }
