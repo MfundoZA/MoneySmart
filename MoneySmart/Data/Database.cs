@@ -1,6 +1,7 @@
 ﻿using MoneySmart.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.SqlClient;
 using System.Text;
 
@@ -10,13 +11,13 @@ namespace MoneySmart.Data
     {
         private SqlConnection Connection { get; set; }
         private string ConnectionString { get; set; }
-        public List<Transaction> Transactions { get; set; }
+        public ObservableCollection<Transaction> Transactions { get; set; }
 
         public Database()
         {
             ConnectionString = "Data Source=JORDAN;Initial Catalog=MoneySmart;Integrated Security=True";
             Connection = new SqlConnection(ConnectionString);
-            Transactions = new List<Transaction>();
+            Transactions = new ObservableCollection<Transaction>();
             getTransactions();
         }
 
@@ -66,6 +67,9 @@ namespace MoneySmart.Data
                 SqlCommand command = new SqlCommand(addIncome, Connection);
                 command.ExecuteNonQuery();
             }
+
+            Connection.Close();
+            getTransactions();
         }
 
         public string getTheme()
