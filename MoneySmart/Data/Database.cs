@@ -11,18 +11,18 @@ namespace MoneySmart.Data
     {
         private SqlConnection Connection { get; set; }
         private string ConnectionString { get; set; }
-        public ObservableCollection<Transaction> Transactions { get; set; }
 
         public Database()
         {
             ConnectionString = "Data Source=JORDAN;Initial Catalog=MoneySmart;Integrated Security=True";
             Connection = new SqlConnection(ConnectionString);
-            Transactions = new ObservableCollection<Transaction>();
             getTransactions();
         }
 
-        public void getTransactions()
+        public ObservableCollection<Transaction> getTransactions()
         {
+            var transactions = new ObservableCollection<Transaction>();
+
             Connection.Open();
             if (Connection.State == System.Data.ConnectionState.Open)
             {
@@ -49,11 +49,13 @@ namespace MoneySmart.Data
                     Enum.TryParse((string)reader[4], out paymentMethod);
                     transaction.PaymentMethod = paymentMethod;
 
-                    Transactions.Add(transaction);
+                    transactions.Add(transaction);
                 }
 
                 Connection.Close();
             }
+
+            return transactions;
         }
 
         public void addIncome(Transaction income)

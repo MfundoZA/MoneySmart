@@ -7,11 +7,12 @@ namespace MoneySmart.ViewModel
 {
     public class MainViewModel
     {
-        public Database database { get; private set; }
+        public ObservableCollection<Transaction> Transactions { get; set; }
 
         public MainViewModel()
         {
             database = new Database();
+            Transactions = database.getTransactions();
         }
     }
 }
