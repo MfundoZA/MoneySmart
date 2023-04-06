@@ -27,6 +27,7 @@ namespace MoneySmart
         {
             InitializeComponent();
             viewModel = new MainViewModel();
+            this.DataContext = viewModel;
         }
 
         private void mniNewIncomeOnClick(object sender, RoutedEventArgs e)
