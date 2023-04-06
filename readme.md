@@ -1,7 +1,7 @@
 # MoneySmart
 
 ## A budgeting desktop app made with WPF/C# and Azure SQL
-![MoneySmart Main Dashboard]("Images/MoneySmart MainWindow.png")
+![MoneySmart Main Dashboard](Images/MoneySmart%20MainWindow.png)
 
 ## Description
 MoneySmart is a desktop application that helps users track their income, expenses and monthly savings. Users can also see a history of all their spending in order
