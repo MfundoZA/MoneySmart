@@ -48,7 +48,7 @@
 
                         <!-- Any content -->
                         <Label Grid.Row="0">Monthly Income</Label>
-                        <Label Margin="0,0,0,0" FontSize="28" Grid.Row="1">R 0</Label>
+                        <Label Margin="0,0,0,0" FontSize="28" Grid.Row="1" Content="{Binding FormattedMonthlyIncome}"></Label>
                     </Grid>
 
                 </Grid>
@@ -75,7 +75,7 @@
 
                         <!-- Any content -->
                         <Label Grid.Row="0">Monthly Expenses</Label>
-                        <Label Margin="0,0,0,0" FontSize="28" Grid.Row="1">R 0</Label>
+                        <Label Margin="0,0,0,0" FontSize="28" Grid.Row="1" Content="{Binding FormattedMonthlyExpenses}"></Label>
                     </Grid>
 
                 </Grid>
@@ -103,7 +103,7 @@
 
                         <!-- Any content -->
                         <Label Grid.Row="0">Monthly Savings</Label>
-                        <Label Margin="0,0,0,0" FontSize="28" Grid.Row="1">R 0</Label>
+                        <Label Margin="0,0,0,0" FontSize="28" Grid.Row="1" Content="{Binding FormattedMonthlySavings}"></Label>
                     </Grid>
 
                 </Grid>
