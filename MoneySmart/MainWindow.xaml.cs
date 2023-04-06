@@ -52,7 +52,7 @@ namespace MoneySmart
 
         private void Window_Activated(object sender, EventArgs e)
         {
-            lstTransactions.ItemsSource = viewModel.database.Transactions;
+            lstTransactions.ItemsSource = viewModel.Transactions;
         }
     }
 }
