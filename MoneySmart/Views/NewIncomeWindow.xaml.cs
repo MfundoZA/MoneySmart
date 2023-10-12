@@ -23,7 +23,7 @@ namespace MoneySmart.Views
             InitializeComponent();
         }
 
-        private void btnCreateTransaction_Click(object sender, RoutedEventArgs e)
+        private void btnCreateIncome_Click(object sender, RoutedEventArgs e)
         {
             string description = txtDescription.Text;
             Models.Type type = Models.Type.Income;
