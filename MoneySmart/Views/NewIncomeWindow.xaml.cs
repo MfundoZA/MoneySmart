@@ -50,7 +50,7 @@ namespace MoneySmart.Views
             }
 
             Transaction income = new Transaction(description, type, amount, paymentMethod);
-            App.database.addIncome(income);
+            App.database.addTransaction(income);
 
             this.DialogResult = true;
             this.Close();

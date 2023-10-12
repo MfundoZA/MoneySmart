@@ -58,15 +58,15 @@ namespace MoneySmart.Data
             return transactions;
         }
 
-        public void addIncome(Transaction income)
+        public void addTransaction(Transaction transaction)
         {
             Connection.Open();
             if (Connection.State == System.Data.ConnectionState.Open)
             {
-                string addIncome = "INSERT INTO [Transaction] ([description], [type_id], amount, payment_method_id) VALUES" +
-                    $"('{income.Description}', {(int)income.Type}, {income.Amount}, {(int)income.PaymentMethod});";
+                string addTransaction = "INSERT INTO [Transaction] ([description], [type_id], amount, payment_method_id) VALUES" +
+                    $"('{transaction.Description}', {(int)transaction.Type}, {transaction.Amount}, {(int)transaction.PaymentMethod});";
 
-                SqlCommand command = new SqlCommand(addIncome, Connection);
+                SqlCommand command = new SqlCommand(addTransaction, Connection);
                 command.ExecuteNonQuery();
             }
 
