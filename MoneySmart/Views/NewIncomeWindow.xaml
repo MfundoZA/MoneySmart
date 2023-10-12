@@ -30,7 +30,7 @@
             <ComboBoxItem Content="EFT"/>
         </ComboBox>
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="btnCreateTransaction" Margin="20,20, 20,20" Height="30" Width="120" HorizontalAlignment="Center" Click="btnCreateTransaction_Click">Create Transaction</Button>
+            <Button x:Name="btnCreateIncome" Margin="20,20, 20,20" Height="30" Width="120" HorizontalAlignment="Center" Click="btnCreateTransaction_Click">Create Income</Button>
             <Button x:Name="btnCancel" Margin="20,20,20,20" Height="30" Width="120" HorizontalAlignment="Center" Click="btnCancel_Click">Cancel</Button>
         </StackPanel>
         </Grid>
