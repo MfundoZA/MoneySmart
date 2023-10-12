@@ -21,7 +21,6 @@ namespace MoneySmart.Views
         public NewIncomeWindow()
         {
             InitializeComponent();
-            
         }
 
         private void btnCreateTransaction_Click(object sender, RoutedEventArgs e)
@@ -56,6 +55,7 @@ namespace MoneySmart.Views
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
+            this.Close();
         }
     }
 }
