@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <TextBox x:Name="txtDescription" Margin="20,20,180,20" Text="Description" Height="20" VerticalAlignment="Center" Background="White"/>
         <TextBox x:Name="txtAmount" Grid.Row="1" Margin="20,20,180,20" Text="Amount" Height="20" VerticalAlignment="Center" Background="White"/>
-        <ComboBox x:Name="cmbPaymentMethod" Grid.Row="2" Margin="20,20,180,20" Text="Payment method" Height="20" VerticalAlignment="Center" IsDropDownOpen="True" BorderBrush="White" IsEditable="True" >
+        <ComboBox x:Name="cmbPaymentMethod" Grid.Row="2" Margin="20,20,180,20" Text="Payment method" Height="20" VerticalAlignment="Center" BorderBrush="White" IsEditable="True" >
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1">
                     <GradientStop Color="#FFF0F0F0"/>
