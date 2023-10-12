@@ -40,7 +40,10 @@ namespace MoneySmart
 
         private void mniNewExpenseOnClick(object sender, RoutedEventArgs e)
         {
+            var newExpenseWindow = new NewExpenseWindow();
 
+            // Returns wheter the task was completed or canceled
+            bool? result = newExpenseWindow.ShowDialog();
         }
 
         private void mniDashboardOnClick(object sender, RoutedEventArgs e)
