@@ -71,7 +71,6 @@ namespace MoneySmart.Data
             }
 
             Connection.Close();
-            getTransactions();
         }
 
         public string getTheme()

@@ -3,12 +3,13 @@ using MoneySmart.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Globalization;
 using System.Text;
 
 namespace MoneySmart.ViewModel
 {
-    public class MainViewModel
+    public class MainViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<Transaction> Transactions { get; set; }
         public decimal MonthlyIncome { get; set; }
@@ -21,7 +22,13 @@ namespace MoneySmart.ViewModel
 
         public MainViewModel()
         {
-            database = new Database();
+            database = App.database;
+
+            refreshMontlyPanels();
+        }
+
+        public void refreshMontlyPanels()
+        {
             Transactions = database.getTransactions();
 
             decimal incomeSum = 0;
@@ -40,12 +47,21 @@ namespace MoneySmart.ViewModel
             }
 
             MonthlyIncome = incomeSum;
-            MonthlyExpenses= expensesSum;
+            MonthlyExpenses = expensesSum;
             MonthlySavings = MonthlyIncome - MonthlyExpenses;
 
             FormattedMonthlyIncome = string.Format("{0:C0}", MonthlyIncome);
             FormattedMonthlyExpenses = string.Format("{0:C0}", MonthlyExpenses);
             FormattedMonthlySavings = string.Format("{0:C0}", MonthlySavings);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }
