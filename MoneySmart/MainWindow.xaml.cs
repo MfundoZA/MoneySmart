@@ -33,6 +33,8 @@ namespace MoneySmart
         private void mniNewIncomeOnClick(object sender, RoutedEventArgs e)
         {
             var newIncomeWindow = new NewIncomeWindow();
+
+            // Returns wheter the task was completed or canceled
             bool? result = newIncomeWindow.ShowDialog();
         }
 
@@ -53,6 +55,7 @@ namespace MoneySmart
         private void Window_Activated(object sender, EventArgs e)
         {
             lstTransactions.ItemsSource = viewModel.Transactions;
+            viewModel.refreshMontlyPanels();
         }
     }
 }

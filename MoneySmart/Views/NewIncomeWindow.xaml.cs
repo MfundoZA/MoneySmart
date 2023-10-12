@@ -48,12 +48,14 @@ namespace MoneySmart.Views
 
             Transaction income = new Transaction(description, type, amount, paymentMethod);
             App.database.addIncome(income);
+
+            this.DialogResult = true;
             this.Close();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-
+            this.DialogResult = false;
         }
     }
 }
