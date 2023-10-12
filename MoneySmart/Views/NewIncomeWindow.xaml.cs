@@ -28,7 +28,7 @@ namespace MoneySmart.Views
             string description = txtDescription.Text;
             Models.Type type = Models.Type.Income;
             decimal amount = Decimal.Parse(txtAmount.Text);
-            PaymentMethod paymentMethod = PaymentMethod.Cash;
+            PaymentMethod paymentMethod;
 
             switch (cmbPaymentMethod.SelectedIndex)
             {
@@ -42,6 +42,10 @@ namespace MoneySmart.Views
 
                 case 2:
                     paymentMethod = PaymentMethod.EFT;
+                break;
+
+                default:
+                    paymentMethod = PaymentMethod.Cash;
                 break;
             }
 
