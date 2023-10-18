@@ -57,8 +57,8 @@ namespace MoneySmart
 
         private void Window_Activated(object sender, EventArgs e)
         {
-            lstTransactions.ItemsSource = viewModel.Transactions;
             viewModel.refreshMontlyPanels();
+            lstTransactions.ItemsSource = viewModel.Transactions;
         }
     }
 }
