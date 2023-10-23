@@ -12,12 +12,91 @@ namespace MoneySmart.ViewModel
     public class MainViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<Transaction> Transactions { get; set; }
-        public decimal MonthlyIncome { get; set; }
-        public decimal MonthlyExpenses { get; set; }
-        public decimal MonthlySavings { get; set; }
-        public string FormattedMonthlyIncome { get; set; }
-        public string FormattedMonthlyExpenses { get; set; }
-        public string FormattedMonthlySavings { get; set; }
+
+        public decimal MonthlyIncome
+        {
+            get
+            {
+                return MonthlyIncome;
+            }
+
+            set
+            {
+                MonthlyIncome = value;
+                OnPropertyChanged(nameof(MonthlyIncome));
+            }
+        }
+
+        public decimal MonthlyExpenses
+        {
+            get
+            {
+                return MonthlyExpenses;
+            }
+
+            set
+            {
+                MonthlyIncome = value;
+                OnPropertyChanged(nameof(MonthlyExpenses));
+            }
+        }
+
+        public decimal MonthlySavings
+        {
+            get
+            {
+                return MonthlySavings;
+            }
+
+            set
+            {
+                MonthlySavings = value;
+                OnPropertyChanged(nameof(MonthlySavings));
+            }
+        }
+
+        public string FormattedMonthlyIncome
+        {
+            get
+            {
+                return FormattedMonthlyIncome;
+            }
+
+            set
+            {
+                FormattedMonthlyIncome = value;
+                OnPropertyChanged(nameof(FormattedMonthlyIncome));
+            }
+        }
+
+        public string FormattedMonthlyExpenses
+        {
+            get
+            {
+                return FormattedMonthlyExpenses;
+            }
+
+            set
+            {
+                FormattedMonthlyExpenses = value;
+                OnPropertyChanged(nameof(FormattedMonthlyExpenses));
+            }
+        }
+
+        public string FormattedMonthlySavings
+        {
+            get
+            {
+                return FormattedMonthlySavings;
+            }
+
+            set
+            {
+                FormattedMonthlySavings = value;
+                OnPropertyChanged(nameof(FormattedMonthlySavings));
+            }
+        }
+
         public static Database database { get; private set; }
 
         public MainViewModel()
