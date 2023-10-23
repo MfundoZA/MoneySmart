@@ -16,7 +16,6 @@ namespace MoneySmart.Data
         {
             ConnectionString = "Data Source=JORDAN;Initial Catalog=MoneySmart;Integrated Security=True";
             Connection = new SqlConnection(ConnectionString);
-            getTransactions();
         }
 
         public ObservableCollection<Transaction> getTransactions()
@@ -55,7 +54,7 @@ namespace MoneySmart.Data
                 Connection.Close();
             }
 
-            return transactions;
+             return transactions;
         }
 
         public void addTransaction(Transaction transaction)
