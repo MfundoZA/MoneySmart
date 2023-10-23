@@ -152,6 +152,13 @@
                                     <Label Content="{Binding PaymentMethod}"  HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="0,0,0,0" FontFamily="Arial" FontSize="18" />
                                     <Separator/>
                                 </StackPanel>
+
+                                <Grid.ContextMenu>
+                                    <ContextMenu Name="contextMenu">
+                                        <MenuItem Header="Edit"/>
+                                        <MenuItem Header="Delete"/>
+                                    </ContextMenu>
+                                </Grid.ContextMenu>
                             </Grid>
                         </DataTemplate >
                     </ListBox.ItemTemplate>
