@@ -12,17 +12,24 @@ namespace MoneySmart.ViewModel
     public class MainViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<Transaction> Transactions { get; set; }
+        private decimal monthlyIncome;
+        private decimal monthlyExpenses;
+        private decimal monthlySavings;
+
+        private string formattedMonthlyIncome;
+        private string formattedMonthlyExpenses;
+        private string formattedMonthlySavings;
 
         public decimal MonthlyIncome
         {
             get
             {
-                return MonthlyIncome;
+                return monthlyIncome;
             }
 
             set
             {
-                MonthlyIncome = value;
+                monthlyIncome = value;
                 OnPropertyChanged(nameof(MonthlyIncome));
             }
         }
@@ -31,12 +38,12 @@ namespace MoneySmart.ViewModel
         {
             get
             {
-                return MonthlyExpenses;
+                return monthlyExpenses;
             }
 
             set
             {
-                MonthlyIncome = value;
+                monthlyIncome = value;
                 OnPropertyChanged(nameof(MonthlyExpenses));
             }
         }
@@ -45,12 +52,12 @@ namespace MoneySmart.ViewModel
         {
             get
             {
-                return MonthlySavings;
+                return monthlySavings;
             }
 
             set
             {
-                MonthlySavings = value;
+                monthlySavings = value;
                 OnPropertyChanged(nameof(MonthlySavings));
             }
         }
@@ -59,12 +66,12 @@ namespace MoneySmart.ViewModel
         {
             get
             {
-                return FormattedMonthlyIncome;
+                return formattedMonthlyIncome;
             }
 
             set
             {
-                FormattedMonthlyIncome = value;
+                formattedMonthlyIncome = value;
                 OnPropertyChanged(nameof(FormattedMonthlyIncome));
             }
         }
@@ -73,12 +80,12 @@ namespace MoneySmart.ViewModel
         {
             get
             {
-                return FormattedMonthlyExpenses;
+                return formattedMonthlyExpenses;
             }
 
             set
             {
-                FormattedMonthlyExpenses = value;
+                formattedMonthlyExpenses = value;
                 OnPropertyChanged(nameof(FormattedMonthlyExpenses));
             }
         }
@@ -87,12 +94,12 @@ namespace MoneySmart.ViewModel
         {
             get
             {
-                return FormattedMonthlySavings;
+                return formattedMonthlySavings;
             }
 
             set
             {
-                FormattedMonthlySavings = value;
+                formattedMonthlySavings = value;
                 OnPropertyChanged(nameof(FormattedMonthlySavings));
             }
         }
@@ -125,9 +132,9 @@ namespace MoneySmart.ViewModel
                 }
             }
 
-            MonthlyIncome = incomeSum;
-            MonthlyExpenses = expensesSum;
-            MonthlySavings = MonthlyIncome - MonthlyExpenses;
+            monthlyIncome = incomeSum;
+            monthlyExpenses = expensesSum;
+            monthlySavings = MonthlyIncome - MonthlyExpenses;
 
             FormattedMonthlyIncome = string.Format("{0:C0}", MonthlyIncome);
             FormattedMonthlyExpenses = string.Format("{0:C0}", MonthlyExpenses);
