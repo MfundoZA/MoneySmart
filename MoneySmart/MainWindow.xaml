@@ -132,18 +132,11 @@
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
 
-                                <Grid Grid.Row="0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Description:" FontSize="18" FontFamily="Arial" FontWeight="SemiBold" />
+                                    <Label Content="{Binding Description}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" FontSize="18" FontFamily="Arial" />
+                                </StackPanel>
                                     
-                                    <Label Grid.Column="0" Content="Description:" FontSize="18" FontFamily="Arial" FontWeight="SemiBold" />
-                                    <Label Grid.Column="1" Content="{Binding Description}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" FontSize="18" FontFamily="Arial" />
-                                    <Label Grid.Column="2" Content=":" HorizontalAlignment="Right"></Label>
-                                </Grid>
-
                                 <StackPanel Orientation="Horizontal"  Grid.Row="1" Margin="0,0,0,0">
                                     <Label Content="Transaction Type:" FontSize="18" FontFamily="Arial" FontWeight="SemiBold" />
                                     <Label Content="{Binding Type}"  HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="0,0,0,0" FontFamily="Arial" FontSize="18" />
