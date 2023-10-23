@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MoneySmart"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Style="{StaticResource Window}" Activated="Window_Activated">
+        Title="MainWindow" Height="450" Width="800" Style="{StaticResource Window}" Activated="Window_Activated" DataContext="">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.5*" MinHeight="25" MaxHeight="30"/>
@@ -48,7 +48,7 @@
 
                         <!-- Any content -->
                         <Label Grid.Row="0">Monthly Income</Label>
-                        <Label Margin="0,0,0,0" FontSize="28" Grid.Row="1" Content="{Binding FormattedMonthlyIncome}"></Label>
+                        <Label Margin="0,0,0,0" FontSize="28" Grid.Row="1" Content="{Binding FormattedMonthlyIncome, UpdateSourceTrigger=PropertyChanged}"></Label>
                     </Grid>
 
                 </Grid>
@@ -75,7 +75,7 @@
 
                         <!-- Any content -->
                         <Label Grid.Row="0">Monthly Expenses</Label>
-                        <Label Margin="0,0,0,0" FontSize="28" Grid.Row="1" Content="{Binding FormattedMonthlyExpenses}"></Label>
+                        <Label Margin="0,0,0,0" FontSize="28" Grid.Row="1" Content="{Binding FormattedMonthlyExpenses, UpdateSourceTrigger=PropertyChanged}"></Label>
                     </Grid>
 
                 </Grid>
@@ -103,7 +103,7 @@
 
                         <!-- Any content -->
                         <Label Grid.Row="0">Monthly Savings</Label>
-                        <Label Margin="0,0,0,0" FontSize="28" Grid.Row="1" Content="{Binding FormattedMonthlySavings}"></Label>
+                        <Label Margin="0,0,0,0" FontSize="28" Grid.Row="1" Content="{Binding FormattedMonthlySavings, UpdateSourceTrigger=PropertyChanged}"></Label>
                     </Grid>
 
                 </Grid>

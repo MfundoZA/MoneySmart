@@ -109,14 +109,13 @@ namespace MoneySmart.ViewModel
         public MainViewModel()
         {
             database = App.database;
-
-            refreshMontlyPanels();
+            Transactions = database.getTransactions();
+            updateMontlyProperties();
         }
 
-        public void refreshMontlyPanels()
+        public void updateMontlyProperties()
         {
             Transactions = database.getTransactions();
-
             decimal incomeSum = 0;
             decimal expensesSum = 0;
 

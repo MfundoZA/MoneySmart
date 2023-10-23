@@ -36,6 +36,7 @@ namespace MoneySmart
 
             // Returns wheter the task was completed or canceled
             bool? result = newIncomeWindow.ShowDialog();
+            viewModel.updateMontlyProperties();
         }
 
         private void mniNewExpenseOnClick(object sender, RoutedEventArgs e)
@@ -44,6 +45,7 @@ namespace MoneySmart
 
             // Returns wheter the task was completed or canceled
             bool? result = newExpenseWindow.ShowDialog();
+            viewModel.updateMontlyProperties();
         }
 
         private void mniDashboardOnClick(object sender, RoutedEventArgs e)
@@ -57,7 +59,7 @@ namespace MoneySmart
 
         private void Window_Activated(object sender, EventArgs e)
         {
-            viewModel.refreshMontlyPanels();
+            viewModel.updateMontlyProperties();
             lstTransactions.ItemsSource = viewModel.Transactions;
         }
     }
