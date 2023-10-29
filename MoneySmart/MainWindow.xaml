@@ -161,9 +161,12 @@
                             <MenuItem Header="Delete" Click="cniDelete_Click"/>
                                     </ContextMenu>
                     </ListBox.ContextMenu>
-                            </Grid>
-                        </DataTemplate >
-                    </ListBox.ItemTemplate>
+
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
                 </ListBox>
             </Grid>
         </Border>
