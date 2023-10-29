@@ -70,7 +70,21 @@ namespace MoneySmart
                 return;
             }
 
-            // Todo: Add logic for deleting here
+            viewModel.selectedIndex = lstTransactions.SelectedIndex;
+            var transaction = viewModel.Transactions[lstTransactions.SelectedIndex];
+            var newEditTransactionWindow = new Window();
+
+            if (transaction.Type == Models.Type.Income)
+            {
+                newEditTransactionWindow = new NewIncomeWindow();
+            }
+            else
+            {
+                newEditTransactionWindow = new NewExpenseWindow();
+            }
+
+            newEditTransactionWindow.DataContext = viewModel;
+            newEditTransactionWindow.ShowDialog();
         }
 
         private void cniDelete_Click(object sender, RoutedEventArgs e)
