@@ -62,5 +62,20 @@ namespace MoneySmart
             viewModel.updateMontlyProperties();
             lstTransactions.ItemsSource = viewModel.Transactions;
         }
+
+        private void cniEdit_Click(object sender, RoutedEventArgs e)
+        {
+            if (lstTransactions.SelectedIndex == -1)
+            {
+                return;
+            }
+
+            // Todo: Add logic for deleting here
+        }
+
+        private void cniDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
