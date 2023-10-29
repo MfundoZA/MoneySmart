@@ -150,7 +150,6 @@
                                 <StackPanel Orientation="Horizontal"  Grid.Row="3" Margin="0,0,0,16">
                                     <Label Content="Payment Method:" FontSize="18" FontFamily="Arial" FontWeight="SemiBold" />
                                     <Label Content="{Binding PaymentMethod}"  HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="0,0,0,0" FontFamily="Arial" FontSize="18" />
-                                    <Separator/>
                                 </StackPanel>
 
                                 <Grid.ContextMenu>
