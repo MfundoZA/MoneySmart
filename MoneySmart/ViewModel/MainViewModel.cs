@@ -12,6 +12,7 @@ namespace MoneySmart.ViewModel
     public class MainViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<Transaction> Transactions { get; set; }
+        public int selectedIndex { get; set; }
         private decimal monthlyIncome;
         private decimal monthlyExpenses;
         private decimal monthlySavings;
