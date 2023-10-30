@@ -72,6 +72,23 @@ namespace MoneySmart.Data
             Connection.Close();
         }
 
+        public void updateTransction(Transaction transaction)
+        {
+            Connection.Open();
+            if (Connection.State == System.Data.ConnectionState.Open)
+            {
+                string updateTransaction = "UPDATE [Transaction]" +
+                    $"SET ([description] = {transaction.Description},  [type_id] = {transaction.Type}, " +
+                    $"amount = {transaction.Amount}, payment_method = {transaction.PaymentMethod}" +
+                    $"WHERE [id] = {transaction.Id}";
+
+                SqlCommand command = new SqlCommand(updateTransaction, Connection);
+                command.ExecuteNonQuery();
+            }
+
+            Connection.Close();
+        }
+
         public string getTheme()
         {
             string appTheme = null;
