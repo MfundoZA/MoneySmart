@@ -73,15 +73,8 @@ namespace MoneySmart
             viewModel.selectedIndex = lstTransactions.SelectedIndex;
             var transaction = viewModel.Transactions[lstTransactions.SelectedIndex];
             var newEditTransactionWindow = new Window();
-
-            if (transaction.Type == Models.Type.Income)
-            {
-                newEditTransactionWindow = new NewIncomeWindow();
-            }
-            else
-            {
-                newEditTransactionWindow = new NewExpenseWindow();
-            }
+            
+            newEditTransactionWindow = new EditTransactionWindow();
 
             newEditTransactionWindow.DataContext = viewModel;
             newEditTransactionWindow.ShowDialog();
