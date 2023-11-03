@@ -19,8 +19,6 @@ namespace MoneySmart.Views
     /// </summary>
     public partial class NewIncomeWindow : Window
     {
-        bool isInitialized = false;
-
         public NewIncomeWindow()
         {
             InitializeComponent();
@@ -63,21 +61,6 @@ namespace MoneySmart.Views
         {
             this.DialogResult = false;
             this.Close();
-        }
-
-        private void Window_Activated(object sender, EventArgs e)
-        {
-            if (isInitialized == false && DataContext is MainViewModel)
-            {
-                var viewModel = (MainViewModel) this.DataContext;
-                var transaction = viewModel.Transactions[viewModel.selectedIndex];
-
-                txtDescription.Text = transaction.Description;
-                txtAmount.Text = transaction.Amount.ToString();
-                cmbPaymentMethod.SelectedIndex = (int) transaction.PaymentMethod;
-            }
-
-            isInitialized = true;
         }
     }
 }
