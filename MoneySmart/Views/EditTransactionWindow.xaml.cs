@@ -22,8 +22,8 @@ namespace MoneySmart.Views
             InitializeComponent();
         }
 
-        private void Window_Activated(object sender, EventArgs e)
-        {
+            var viewModel = (MainViewModel) this.DataContext;
+            var transaction = viewModel.Transactions[viewModel.selectedIndex];
 
         }
 
