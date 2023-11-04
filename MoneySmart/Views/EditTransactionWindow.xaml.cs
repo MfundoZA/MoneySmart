@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoneySmart.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -20,11 +21,15 @@ namespace MoneySmart.Views
         public EditTransactionWindow()
         {
             InitializeComponent();
-        }
 
             var viewModel = (MainViewModel) this.DataContext;
             var transaction = viewModel.Transactions[viewModel.selectedIndex];
 
+            txtId.Text = transaction.Id.ToString();
+            txtDescription.Text = transaction.Description;
+            cmbTransactionType.SelectedIndex = (int) transaction.Type;
+            txtAmount.Text = transaction.Amount.ToString();
+            cmbPaymentMethod.SelectedIndex = (int)transaction.PaymentMethod;
         }
 
         private void btnEditTransaction_Click(object sender, RoutedEventArgs e)
