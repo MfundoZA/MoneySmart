@@ -11,7 +11,8 @@ namespace MoneySmart.ViewModel
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<Transaction> Transactions { get; set; }
+        public static ObservableCollection<Transaction> Transactions { get; set; }
+        public int selectedIndex { get; set; }
         private decimal monthlyIncome;
         private decimal monthlyExpenses;
         private decimal monthlySavings;
@@ -135,9 +136,11 @@ namespace MoneySmart.ViewModel
             monthlyExpenses = expensesSum;
             monthlySavings = MonthlyIncome - MonthlyExpenses;
 
-            FormattedMonthlyIncome = string.Format("{0:C0}", MonthlyIncome);
-            FormattedMonthlyExpenses = string.Format("{0:C0}", MonthlyExpenses);
-            FormattedMonthlySavings = string.Format("{0:C0}", MonthlySavings);
+            var ci = new CultureInfo("en-ZA");
+
+            FormattedMonthlyIncome = MonthlyIncome.ToString("C", ci);
+            FormattedMonthlyExpenses = MonthlyExpenses.ToString("C", ci);
+            FormattedMonthlySavings = MonthlySavings.ToString("C", ci);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

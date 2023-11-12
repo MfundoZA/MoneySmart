@@ -1,4 +1,5 @@
 ﻿using MoneySmart.Models;
+using MoneySmart.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Text;

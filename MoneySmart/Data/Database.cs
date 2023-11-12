@@ -22,39 +22,74 @@ namespace MoneySmart.Data
         {
             var transactions = new ObservableCollection<Transaction>();
 
-            Connection.Open();
-            if (Connection.State == System.Data.ConnectionState.Open)
-            {
-                string getAllTransactions = "SELECT t.id, t.description, [Type].type, t.amount, pay.payment_method FROM [Transaction] " +
-                    "AS t INNER JOIN [Type] ON t.type_id = [Type].type_id " +
-                    "INNER JOIN PaymentMethod AS pay ON t.payment_method_id = pay.payment_method_id " +
-                    "ORDER BY [Type].type DESC";
-                SqlCommand command = new SqlCommand(getAllTransactions, Connection);
-                SqlDataReader reader = command.ExecuteReader();
+            if (Connection.State != System.Data.ConnectionState.Open) {
+                Connection.Open();
 
-                while (reader.Read())
+                if (Connection.State == System.Data.ConnectionState.Open)
                 {
-                    Transaction transaction = new Transaction();
-                    transaction.Id = (int) reader[0];
-                    transaction.Description = (string) reader[1];
+                    string getAllTransactions = "SELECT t.id, t.description, [TransactionType].type, t.amount, pay.payment_method FROM [Transaction] " +
+                        "AS t INNER JOIN [TransactionType] ON t.type_id = [TransactionType].id " +
+                        "INNER JOIN PaymentMethod AS pay ON t.payment_method_id = pay.id " +
+                        "ORDER BY [TransactionType].type DESC";
+                    SqlCommand command = new SqlCommand(getAllTransactions, Connection);
+                    SqlDataReader reader = command.ExecuteReader();
 
-                    Models.Type transactionType;
-                    Enum.TryParse((string) reader[2], out transactionType);
-                    transaction.Type = transactionType;
+                    while (reader.Read())
+                    {
+                        Transaction transaction = new Transaction();
+                        transaction.Id = (int)reader[0];
+                        transaction.Description = (string)reader[1];
 
-                    transaction.Amount = (decimal) reader[3];
+                        Models.Type transactionType;
+                        Enum.TryParse((string)reader[2], out transactionType);
+                        transaction.Type = transactionType;
 
-                    Models.PaymentMethod paymentMethod;
-                    Enum.TryParse((string)reader[4], out paymentMethod);
-                    transaction.PaymentMethod = paymentMethod;
+                        transaction.Amount = (decimal)reader[3];
 
-                    transactions.Add(transaction);
+                        Models.PaymentMethod paymentMethod;
+                        Enum.TryParse((string)reader[4], out paymentMethod);
+                        transaction.PaymentMethod = paymentMethod;
+
+                        transactions.Add(transaction);
+                    }
                 }
 
-                Connection.Close();
+            }
+            else
+            {
+                if (Connection.State == System.Data.ConnectionState.Open)
+                {
+                    string getAllTransactions = "SELECT t.id, t.description, [TransactionType].type, t.amount, pay.payment_method FROM [Transaction] " +
+                        "AS t INNER JOIN [TransactionType] ON t.type_id = [TransactionType].id " +
+                        "INNER JOIN PaymentMethod AS pay ON t.payment_method_id = pay.id " +
+                        "ORDER BY [TransactionType].type DESC";
+                    SqlCommand command = new SqlCommand(getAllTransactions, Connection);
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Transaction transaction = new Transaction();
+                        transaction.Id = (int)reader[0];
+                        transaction.Description = (string)reader[1];
+
+                        Models.Type transactionType;
+                        Enum.TryParse((string)reader[2], out transactionType);
+                        transaction.Type = transactionType;
+
+                        transaction.Amount = (decimal)reader[3];
+
+                        Models.PaymentMethod paymentMethod;
+                        Enum.TryParse((string)reader[4], out paymentMethod);
+                        transaction.PaymentMethod = paymentMethod;
+
+                        transactions.Add(transaction);
+                    }
+                }
             }
 
-             return transactions;
+            Connection.Close();
+
+            return transactions;
         }
 
         public void addTransaction(Transaction transaction)
@@ -70,6 +105,24 @@ namespace MoneySmart.Data
             }
 
             Connection.Close();
+        }
+
+        public void updateTransction(Transaction transaction)
+        {
+            Connection.Open();
+            if (Connection.State == System.Data.ConnectionState.Open)
+            {
+                string updateTransaction = "UPDATE [Transaction] " +
+                    $"SET [description] = '{transaction.Description}',  [type_id] = {((int)transaction.Type)}, " +
+                    $"amount = {transaction.Amount}, payment_method_id = {(int)transaction.PaymentMethod}" +
+                    $" WHERE [id] = {transaction.Id}";
+
+                SqlCommand command = new SqlCommand(updateTransaction, Connection);
+                command.ExecuteNonQuery();
+                Connection.Close();
+            }
+
+            
         }
 
         public string getTheme()

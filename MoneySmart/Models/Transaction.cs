@@ -24,5 +24,14 @@ namespace MoneySmart.Models
             Amount = amount;
             PaymentMethod = paymentMethod;
         }
+
+        public Transaction(int id, string description, Type type, decimal amount, PaymentMethod paymentMethod)
+        {
+            Id = id;
+            Description = description;
+            Type = type;
+            Amount = amount;
+            PaymentMethod = paymentMethod;
+        }
     }
 }

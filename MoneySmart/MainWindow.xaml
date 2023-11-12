@@ -121,7 +121,7 @@
                 <Border Background="White" CornerRadius="7"/>
 
                 <!-- Main content container -->
-                <ListBox x:Name="lstTransactions" Margin="4" BorderBrush="#00ABADB3">
+                <ListBox x:Name="lstTransactions" Margin="4" BorderBrush="#00ABADB3" HorizontalContentAlignment="Stretch">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>
@@ -132,29 +132,41 @@
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
 
-                                <StackPanel Orientation="Horizontal" Grid.Row="0">
+                                <StackPanel Orientation="Horizontal">
                                     <Label Content="Description:" FontSize="18" FontFamily="Arial" FontWeight="SemiBold" />
                                     <Label Content="{Binding Description}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" FontSize="18" FontFamily="Arial" />
                                 </StackPanel>
-
+                                    
                                 <StackPanel Orientation="Horizontal"  Grid.Row="1" Margin="0,0,0,0">
                                     <Label Content="Transaction Type:" FontSize="18" FontFamily="Arial" FontWeight="SemiBold" />
                                     <Label Content="{Binding Type}"  HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="0,0,0,0" FontFamily="Arial" FontSize="18" />
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal" Grid.Row="2">
-                                    <Label Content="Amount:" FontSize="18" FontFamily="Arial" FontWeight="SemiBold" />
+                                    <Label Content="Amount: R" FontSize="18" FontFamily="Arial" FontWeight="SemiBold" />
                                     <Label Content="{Binding Amount}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="0,0,0,0" FontSize="18" FontFamily="Arial"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal"  Grid.Row="3" Margin="0,0,0,16">
                                     <Label Content="Payment Method:" FontSize="18" FontFamily="Arial" FontWeight="SemiBold" />
                                     <Label Content="{Binding PaymentMethod}"  HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="0,0,0,0" FontFamily="Arial" FontSize="18" />
-                                    <Separator/>
                                 </StackPanel>
                             </Grid>
                         </DataTemplate >
                     </ListBox.ItemTemplate>
+
+                    <ListBox.ContextMenu>
+                                    <ContextMenu Name="contextMenu">
+                            <MenuItem Header="Edit" Click="cniEdit_Click"/>
+                            <MenuItem Header="Delete" Click="cniDelete_Click"/>
+                                    </ContextMenu>
+                    </ListBox.ContextMenu>
+
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
                 </ListBox>
             </Grid>
         </Border>
