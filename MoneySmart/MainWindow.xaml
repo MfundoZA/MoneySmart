@@ -143,7 +143,7 @@
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal" Grid.Row="2">
-                                    <Label Content="Amount:" FontSize="18" FontFamily="Arial" FontWeight="SemiBold" />
+                                    <Label Content="Amount: R" FontSize="18" FontFamily="Arial" FontWeight="SemiBold" />
                                     <Label Content="{Binding Amount}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="0,0,0,0" FontSize="18" FontFamily="Arial"/>
                                 </StackPanel>
 
