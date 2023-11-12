@@ -25,10 +25,10 @@ namespace MoneySmart.Data
             Connection.Open();
             if (Connection.State == System.Data.ConnectionState.Open)
             {
-                string getAllTransactions = "SELECT t.id, t.description, [Type].type, t.amount, pay.payment_method FROM [Transaction] " +
-                    "AS t INNER JOIN [Type] ON t.type_id = [Type].type_id " +
-                    "INNER JOIN PaymentMethod AS pay ON t.payment_method_id = pay.payment_method_id " +
-                    "ORDER BY [Type].type DESC";
+                string getAllTransactions = "SELECT t.id, t.description, [TransactionType].type, t.amount, pay.payment_method FROM [Transaction] " +
+                    "AS t INNER JOIN [TransactionType] ON t.type_id = [TransactionType].id " +
+                    "INNER JOIN PaymentMethod AS pay ON t.payment_method_id = pay.id " +
+                    "ORDER BY [TransactionType].type DESC";
                 SqlCommand command = new SqlCommand(getAllTransactions, Connection);
                 SqlDataReader reader = command.ExecuteReader();
 
