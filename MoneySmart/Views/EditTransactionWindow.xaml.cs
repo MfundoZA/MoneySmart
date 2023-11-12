@@ -1,15 +1,8 @@
-﻿using MoneySmart.ViewModel;
+﻿using MoneySmart.Models;
+using MoneySmart.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Type = MoneySmart.Models.Type;
 
 namespace MoneySmart.Views
 {
@@ -18,11 +11,13 @@ namespace MoneySmart.Views
     /// </summary>
     public partial class EditTransactionWindow : Window
     {
+        public MainViewModel viewModel { get; set; }
+
         public EditTransactionWindow()
         {
             InitializeComponent();
 
-            var viewModel = (MainViewModel) this.DataContext;
+            viewModel = (MainViewModel) this.DataContext;
             var transaction = viewModel.Transactions[viewModel.selectedIndex];
 
             txtId.Text = transaction.Id.ToString();
@@ -34,7 +29,14 @@ namespace MoneySmart.Views
 
         private void btnEditTransaction_Click(object sender, RoutedEventArgs e)
         {
+            var transactionType = (Type) cmbTransactionType.SelectedIndex;
+            var paymentMethod = (PaymentMethod) cmbPaymentMethod.SelectedIndex;
 
+            var editedTransaction = new Transaction(Int32.Parse(txtId.Text), txtDescription.Text, transactionType, Decimal.Parse(txtAmount.Text), paymentMethod);
+
+
+            // Update list then update database
+            viewModel.Transactions[viewModel.selectedIndex] = editedTransaction;
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
