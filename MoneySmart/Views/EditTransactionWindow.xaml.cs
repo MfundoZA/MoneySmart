@@ -17,8 +17,7 @@ namespace MoneySmart.Views
         {
             InitializeComponent();
 
-            viewModel = (MainViewModel) this.DataContext;
-            var transaction = viewModel.Transactions[viewModel.selectedIndex];
+            var transaction = MainViewModel.Transactions[MainWindow.SelectedTransaction];
 
             txtId.Text = transaction.Id.ToString();
             txtDescription.Text = transaction.Description;
@@ -36,7 +35,9 @@ namespace MoneySmart.Views
 
 
             // Update list then update database
-            viewModel.Transactions[viewModel.selectedIndex] = editedTransaction;
+            MainViewModel.Transactions[MainWindow.SelectedTransaction] = editedTransaction;
+            MainViewModel.database.updateTransction(editedTransaction);
+            this.Close();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

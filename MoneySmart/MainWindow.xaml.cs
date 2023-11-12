@@ -23,6 +23,8 @@ namespace MoneySmart
     public partial class MainWindow : Window
     {
         MainViewModel viewModel;
+        public static int SelectedTransaction { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -60,7 +62,7 @@ namespace MoneySmart
         private void Window_Activated(object sender, EventArgs e)
         {
             viewModel.updateMontlyProperties();
-            lstTransactions.ItemsSource = viewModel.Transactions;
+            lstTransactions.ItemsSource = MainViewModel.Transactions;
         }
 
         private void cniEdit_Click(object sender, RoutedEventArgs e)
@@ -70,8 +72,8 @@ namespace MoneySmart
                 return;
             }
 
-            viewModel.selectedIndex = lstTransactions.SelectedIndex;
-            var transaction = viewModel.Transactions[lstTransactions.SelectedIndex];
+            SelectedTransaction = lstTransactions.SelectedIndex;
+            var transaction = MainViewModel.Transactions[lstTransactions.SelectedIndex];
             var newEditTransactionWindow = new EditTransactionWindow();
 
             newEditTransactionWindow.DataContext = viewModel;
