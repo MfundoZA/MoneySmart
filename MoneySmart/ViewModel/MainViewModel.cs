@@ -12,7 +12,9 @@ namespace MoneySmart.ViewModel
     public class MainViewModel : INotifyPropertyChanged
     {
         public static ObservableCollection<Transaction> Transactions { get; set; }
-        public int selectedIndex { get; set; }
+        public int SelectedIndex { get; set; }
+        public static Database Database { get; private set; }
+
         private decimal monthlyIncome;
         private decimal monthlyExpenses;
         private decimal monthlySavings;
@@ -105,18 +107,16 @@ namespace MoneySmart.ViewModel
             }
         }
 
-        public static Database database { get; private set; }
-
         public MainViewModel()
         {
-            database = App.database;
-            Transactions = database.getTransactions();
+            Database = App.database;
+            Transactions = Database.getTransactions();
             updateMontlyProperties();
         }
 
         public void updateMontlyProperties()
         {
-            Transactions = database.getTransactions();
+            Transactions = Database.getTransactions();
             decimal incomeSum = 0;
             decimal expensesSum = 0;
 

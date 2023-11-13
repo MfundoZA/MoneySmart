@@ -34,9 +34,9 @@ namespace MoneySmart.Views
             var editedTransaction = new Transaction(Int32.Parse(txtId.Text), txtDescription.Text, transactionType, Decimal.Parse(txtAmount.Text), paymentMethod);
 
 
-            // Update list then update database
+            // Update list then update Database
             MainViewModel.Transactions[MainWindow.SelectedTransaction] = editedTransaction;
-            MainViewModel.database.updateTransction(editedTransaction);
+            MainViewModel.Database.updateTransction(editedTransaction);
             this.Close();
         }
 
