@@ -72,7 +72,6 @@ namespace MoneySmart
             }
 
             viewModel.SelectedIndex = lstTransactions.SelectedIndex;
-            var transaction = viewModel.Transactions[lstTransactions.SelectedIndex];
             var newEditTransactionWindow = new EditTransactionWindow(viewModel);
 
             newEditTransactionWindow.DataContext = viewModel;
@@ -81,6 +80,12 @@ namespace MoneySmart
 
         private void cniDelete_Click(object sender, RoutedEventArgs e)
         {
+            if (lstTransactions.SelectedIndex == -1)
+            {
+                return;
+            }
+
+            viewModel.deleteTransaction(lstTransactions.SelectedIndex);
 
         }
     }

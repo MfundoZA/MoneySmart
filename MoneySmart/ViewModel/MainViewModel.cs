@@ -107,6 +107,7 @@ namespace MoneySmart.ViewModel
             }
         }
 
+        public static Database database { get; private set; }
 
         public MainViewModel()
         {
@@ -151,6 +152,13 @@ namespace MoneySmart.ViewModel
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+
+        public void deleteTransaction(int selectedIndex)
+        {
+            Database.deleteTransaction(Transactions[selectedIndex]);
+            Transactions.RemoveAt(selectedIndex);
+            updateMontlyProperties();
         }
     }
 }
