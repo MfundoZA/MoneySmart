@@ -88,10 +88,9 @@ namespace MoneySmart.Data
 
                 SqlCommand command = new SqlCommand(updateTransaction, Connection);
                 command.ExecuteNonQuery();
-                Connection.Close();
             }
 
-            
+            Connection.Close();
         }
 
         public string getTheme()
