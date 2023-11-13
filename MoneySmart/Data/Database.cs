@@ -93,6 +93,30 @@ namespace MoneySmart.Data
             Connection.Close();
         }
 
+        public bool deleteTransaction(Transaction transaction)
+        {
+            try
+            {
+                Connection.Open();
+                if (Connection.State == System.Data.ConnectionState.Open)
+                {
+                    string deleteTransaction = "DELETE FROM [Transaction]" +
+                        $"WHERE {transaction.Id} = [Transaction].id";
+
+                    SqlCommand command = new SqlCommand(deleteTransaction, Connection);
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch
+            {
+                Connection.Close();
+                return false;
+            }
+
+            Connection.Close();
+            return true;
+        }
+
         public string getTheme()
         {
             string appTheme = null;
