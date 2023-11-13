@@ -151,5 +151,11 @@ namespace MoneySmart.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+        public void deleteTransaction(int selectedIndex)
+        {
+            Database.deleteTransaction(Transactions[selectedIndex]);
+            Transactions.RemoveAt(selectedIndex);
+        }
     }
 }
