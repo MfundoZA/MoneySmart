@@ -11,13 +11,15 @@ namespace MoneySmart.Views
     /// </summary>
     public partial class EditTransactionWindow : Window
     {
-        public MainViewModel viewModel { get; set; }
+        public MainViewModel ViewModel { get; set; }
 
-        public EditTransactionWindow()
+        public EditTransactionWindow(MainViewModel mainViewModel)
         {
             InitializeComponent();
 
-            var transaction = MainViewModel.Transactions[MainWindow.SelectedTransaction];
+            ViewModel = mainViewModel;
+
+            var transaction = ViewModel.Transactions[ViewModel.SelectedIndex];
 
             txtId.Text = transaction.Id.ToString();
             txtDescription.Text = transaction.Description;
@@ -35,7 +37,7 @@ namespace MoneySmart.Views
 
 
             // Update list then update Database
-            MainViewModel.Transactions[MainWindow.SelectedTransaction] = editedTransaction;
+            ViewModel.Transactions[ViewModel.SelectedIndex] = editedTransaction;
             MainViewModel.Database.updateTransction(editedTransaction);
             this.Close();
         }

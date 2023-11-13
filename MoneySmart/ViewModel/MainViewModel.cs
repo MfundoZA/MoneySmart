@@ -11,10 +11,8 @@ namespace MoneySmart.ViewModel
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        public static ObservableCollection<Transaction> Transactions { get; set; }
+        public ObservableCollection<Transaction> Transactions { get; set; }
         public int SelectedIndex { get; set; }
-        public static Database Database { get; private set; }
-
         private decimal monthlyIncome;
         private decimal monthlyExpenses;
         private decimal monthlySavings;
@@ -22,6 +20,8 @@ namespace MoneySmart.ViewModel
         private string formattedMonthlyIncome;
         private string formattedMonthlyExpenses;
         private string formattedMonthlySavings;
+
+        public static Database Database { get; private set; }
 
         public decimal MonthlyIncome
         {
@@ -107,6 +107,8 @@ namespace MoneySmart.ViewModel
             }
         }
 
+        public static Database database { get; private set; }
+
         public MainViewModel()
         {
             Database = App.database;
@@ -156,6 +158,7 @@ namespace MoneySmart.ViewModel
         {
             Database.deleteTransaction(Transactions[selectedIndex]);
             Transactions.RemoveAt(selectedIndex);
+            updateMontlyProperties();
         }
     }
 }
