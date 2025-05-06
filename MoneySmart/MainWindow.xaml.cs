@@ -35,7 +35,7 @@ namespace MoneySmart
         {
             var newIncomeWindow = new NewIncomeWindow();
 
-            // Returns wheter the task was completed or canceled
+            // Returns whether the task was completed or canceled
             bool? result = newIncomeWindow.ShowDialog();
             viewModel.updateMontlyProperties();
         }
@@ -44,7 +44,7 @@ namespace MoneySmart
         {
             var newExpenseWindow = new NewExpenseWindow();
 
-            // Returns wheter the task was completed or canceled
+            // Returns whether the task was completed or canceled
             bool? result = newExpenseWindow.ShowDialog();
             viewModel.updateMontlyProperties();
         }
@@ -86,7 +86,7 @@ namespace MoneySmart
             }
 
             viewModel.deleteTransaction(lstTransactions.SelectedIndex);
-
+            lstTransactions.ItemsSource = viewModel.Transactions;
         }
     }
 }
