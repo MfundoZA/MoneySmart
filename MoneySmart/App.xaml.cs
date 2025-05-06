@@ -19,7 +19,7 @@ namespace MoneySmart
         public App()
         {
             database = new Database();
-            String appTheme = database.getTheme();
+            //String appTheme = database.getTheme();
 
         }
     }

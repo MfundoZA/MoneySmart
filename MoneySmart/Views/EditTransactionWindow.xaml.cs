@@ -38,7 +38,7 @@ namespace MoneySmart.Views
 
             // Update list then update Database
             ViewModel.Transactions[ViewModel.SelectedIndex] = editedTransaction;
-            MainViewModel.Database.updateTransction(editedTransaction);
+            MainViewModel.Database.updateTransaction(editedTransaction);
             this.Close();
         }
 
