@@ -13,22 +13,36 @@
             <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBox x:Name="txtDescription" Margin="20,20,180,20" Text="Description" Height="20" VerticalAlignment="Center" Background="White"/>
-        <TextBox x:Name="txtAmount" Grid.Row="1" Margin="20,20,180,20" Text="Amount" Height="20" VerticalAlignment="Center" Background="White"/>
-        <ComboBox x:Name="cmbPaymentMethod" Grid.Row="2" Margin="20,20,180,20" Text="Payment method" Height="20" VerticalAlignment="Center" BorderBrush="White" IsEditable="True" >
-            <ComboBox.Background>
-                <LinearGradientBrush EndPoint="0,1">
-                    <GradientStop Color="#FFF0F0F0"/>
-                    <GradientStop Color="White" Offset="1"/>
-                </LinearGradientBrush>
-            </ComboBox.Background>
-            <ComboBox.Style>
-                <Style/>
-            </ComboBox.Style>
-            <ComboBoxItem Content="Cash"/>
-            <ComboBoxItem Content="Card"/>
-            <ComboBoxItem Content="EFT"/>
-        </ComboBox>
+        
+        <StackPanel Orientation="Vertical">
+            <Label Content="Description" Margin="20,20,180,8" Padding="0"/>
+            <TextBox x:Name="txtDescription" Margin="20,0,180,20" Height="20" VerticalAlignment="Center" Background="White"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1">
+            <Label Content="Amount" Margin="20,20,180,8" Padding="0"/>
+            <TextBox x:Name="txtAmount"  Margin="20,0,180,20" Height="20" VerticalAlignment="Center" Background="White"/>
+            
+        </StackPanel>
+
+        <StackPanel Grid.Row="2">
+            <Label Content="Payment Method" Margin="20,20,180,8" Padding="0" />
+            <ComboBox x:Name="cmbPaymentMethod" Grid.Row="2" Margin="20,0,180,20" Height="20" VerticalAlignment="Center" BorderBrush="White" IsEditable="True" >
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+                <ComboBox.Style>
+                    <Style/>
+                </ComboBox.Style>
+                <ComboBoxItem Content="Cash"/>
+                <ComboBoxItem Content="Card"/>
+                <ComboBoxItem Content="EFT"/>
+            </ComboBox>
+        </StackPanel>
+        
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Name="btnCreateIncome" Margin="20,20, 20,20" Height="30" Width="120" HorizontalAlignment="Center" Click="btnCreateIncome_Click">Create Income</Button>
             <Button x:Name="btnCancel" Margin="20,20,20,20" Height="30" Width="120" HorizontalAlignment="Center" Click="btnCancel_Click">Cancel</Button>
